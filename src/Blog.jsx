@@ -53,7 +53,7 @@ class Blog extends Component {
 	}
 
 	componentDidMount() {
-		axios.get("https://floating-plains-75090.herokuapp.com/blog")
+		axios.get("https://floating-plains-75090.herokuapp.com")
 		.then(function(response) {
 			this.posts = response.data.post
 			this.setState({
