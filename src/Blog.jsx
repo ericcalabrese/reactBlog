@@ -113,7 +113,7 @@ class Blog extends Component {
 		            <div className="col-md-8">
 		            	<BlogForm addNewStatus={this.addNewStatus}/>
 							{
-								this.state.posts.map((post,i) => {
+								this.state.posts.map((posts,i) => {
 									return <div className="col-md-8" key={"item-" + (i + 1)}>
 												<h2>{post.title}</h2>
 												<h4>{post.body}</h4>
