@@ -11,8 +11,6 @@ var connect = process.env.DATABASE_URL || 'postgres://ericcalabrese:password@loc
 
 var port = process.env.PORT || 3001;
 
-// var port = process.env.PORT || "https://floating-plains-75090.herokuapp.com/";
-
 var sequelize = new Sequelize(connect);
 
 var BlogPosts = sequelize.define('BlogPosts', {
