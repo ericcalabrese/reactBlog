@@ -117,7 +117,7 @@ class Blog extends Component {
 									return <div className="col-md-8" key={"item-" + (i + 1)}>
 												<h2>{post.title}</h2>
 												<h4>{post.body}</h4>
-												<Edit edit={this.onEdit} title={this.state.post.title} body={this.state.post.body} index={i}/>
+												<Edit edit={this.onEdit} index={i}/>
 												<br></br>
 												<Delete delete={this.onDelete} index={post.id}/>
 											</div>
