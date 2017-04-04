@@ -31,7 +31,7 @@ class Blog extends Component {
 	
 
 	addNewStatus(newStatus) {
-		axios.post("https://floating-plains-75090.herokuapp.com/post", {
+		axios.post("http://localhost:3001/post", {
 			title: newStatus.title,
 			body: newStatus.body
 		}).then(function(response) {
@@ -53,7 +53,7 @@ class Blog extends Component {
 	}
 
 	componentDidMount() {
-		axios.get("https://floating-plains-75090.herokuapp.com")
+		axios.get("http://localhost:3001/blog")
 		.then(function(response) {
 			this.posts = response.data.post
 			this.setState({
@@ -67,7 +67,7 @@ class Blog extends Component {
 	onDelete(id) {
 		// e.preventDefault();
 		console.log(id)
-		axios.delete("https://floating-plains-75090.herokuapp.com/posts/"+id+"/delete")
+		axios.delete("http://localhost:3001/posts/"+id+"/delete")
 			.then(function(response){
 				console.log(response)
 				this.setState({
@@ -81,25 +81,25 @@ class Blog extends Component {
 		this.setState({
 			edit: this.state.posts[id]
 		});
-		// axios.post("http://localhost:3001/post/"+id+"/edit", {
-		// 	title: id.title,
-		// 	body: id.body
-		// }).then(function(response) {
+		axios.post("http://localhost:3001/post/"+id+"/edit", {
+			title: id.title,
+			body: id.body
+		}).then(function(response) {
 
 
-		// 	let data = {
-		// 		title: response.data.title,
-		// 		body: response.data.body,
-		// 		id: response.data.id
-		// 	}
+			let data = {
+				title: response.data.title,
+				body: response.data.body,
+				id: response.data.id
+			}
 			
-		// 	this.edit.push(data);
-
-		// 	this.setState({
-		// 		edit: data
-		// 	});
+			this.edit.push(data);
+			console.log("Hi" + data);
+			this.setState({
+				edit: data
+			});
 			
-		// }.bind(this));
+		}.bind(this));
 	}
 	
 
@@ -117,7 +117,7 @@ class Blog extends Component {
 									return <div className="col-md-8" key={"item-" + (i + 1)}>
 												<h2>{post.title}</h2>
 												<h4>{post.body}</h4>
-												<Edit edit={this.onEdit} index={i}/>
+												<Edit edit={this.onEdit}  index={i}/>
 												<br></br>
 												<Delete delete={this.onDelete} index={post.id}/>
 											</div>

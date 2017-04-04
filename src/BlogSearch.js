@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import BlogCategories from './BlogCategories';
 import AboutMe from './AboutMe';
+import '../public/BlogSearch.css';
+
+
 
 export default class BlogSearch extends Component {
 
@@ -9,7 +12,7 @@ export default class BlogSearch extends Component {
 		<div className="container">
         	<div className="row">
                 <div className="col-md-4">
-                    <div className="well">
+                    <div className="searchSpacing well">
                         <h4>Blog Search</h4>
                         <div className="input-group">
                             <input type="text" className="form-control"/>

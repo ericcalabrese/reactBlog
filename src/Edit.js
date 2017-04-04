@@ -27,11 +27,12 @@ class Edit extends Component {
 							        <h4 className="modal-title">Modal Header</h4>
 						    </div>
 						    <div className="modal-body">
-									<h2>{this.props.title}</h2>
-									<h4>{this.props.body}</h4>			    
+									// <h2>{this.props.title}</h2>
+									// <h4>{this.props.body}</h4>
+									<h2>Hi</h2>			    
 							</div>
 						    <div className="modal-footer">
-							    	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							    	<button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
 						    </div>
 					    </div>
 					</div>

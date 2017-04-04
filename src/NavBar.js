@@ -8,7 +8,7 @@ export default class NavBar extends Component {
 				<nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">
 			        <div className="container">
 			            <div className="navbar-header">
-			                <a className="navbar-brand" href="#">Erics Blog</a>
+			                <a className="navbar-brand" href="/">Eric's Blog</a>
 			            </div>
 			            <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			                <ul className="nav navbar-nav">
@@ -16,7 +16,7 @@ export default class NavBar extends Component {
 			                    	<a href="/create">Write</a> 
 			                    </li>
 			                    <li>
-			                        <a href="#">Contact</a>
+			                        <a href="mailto:calabrese.eric@gmail.com">Contact</a>
 			                    </li>
 			                </ul>
 			            </div>
