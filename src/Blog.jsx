@@ -28,7 +28,6 @@ class Blog extends Component {
 
 	}
 
-	
 
 	addNewStatus(newStatus) {
 		axios.post("https://floating-plains-75090.herokuapp.com/post", {
@@ -93,6 +92,7 @@ class Blog extends Component {
 			}
 			
 			this.edit.push(data);
+			console.log("Fizal");
 			console.log("Hi" + data.response.title);
 			this.setState({
 				edit: data
