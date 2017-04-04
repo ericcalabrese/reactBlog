@@ -53,7 +53,7 @@ class Blog extends Component {
 	}
 
 	componentDidMount() {
-		axios.get("https://floating-plains-75090.herokuapp.com")
+		axios.get("https://floating-plains-75090.herokuapp.com/blog")
 		.then(function(response) {
 			this.posts = response.data.post
 			this.setState({
@@ -86,7 +86,6 @@ class Blog extends Component {
 			body: id.body
 		}).then(function(response) {
 
-
 			let data = {
 				title: response.data.title,
 				body: response.data.body,
@@ -94,7 +93,7 @@ class Blog extends Component {
 			}
 			
 			this.edit.push(data);
-			console.log("Hi" + data);
+			console.log("Hi" + data.response.title);
 			this.setState({
 				edit: data
 			});

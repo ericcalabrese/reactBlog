@@ -9,9 +9,9 @@ const Sequelize = require('sequelize');
 
 var connect = process.env.DATABASE_URL || 'postgres://ericcalabrese:password@localhost:5432/blog_db';
 
-// var port = process.env.PORT || 3001;
+var port = process.env.PORT || 3001;
 
-var port = process.env.PORT || "https://floating-plains-75090.herokuapp.com/";
+// var port = process.env.PORT || "https://floating-plains-75090.herokuapp.com/";
 
 var sequelize = new Sequelize(connect);
 
