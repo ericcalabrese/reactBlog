@@ -40,7 +40,8 @@ class BlogForm extends Component {
 					<button className="btn btn-primary">Send</button>
 				</form>
 			</div>
-			);
+
+						);
 	}
 }
 

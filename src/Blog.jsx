@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import BlogForm from './BlogForm';
-import Edit from './Edit';
+// import BlogForm from './BlogForm';
+// import Edit from './Edit';
 import Delete from './Delete';
 import axios from 'axios';
 import BlogSearch from './BlogSearch';
 import Footer from './Footer';
+import NavBar from './NavBar';
+import '../public/Blog.css';
+
 
 
 class Blog extends Component {
@@ -30,7 +33,7 @@ class Blog extends Component {
 
 
 	addNewStatus(newStatus) {
-		axios.post("https://floating-plains-75090.herokuapp.com/post", {
+		axios.post("http://localhost:3001/post", {
 			title: newStatus.title,
 			body: newStatus.body
 		}).then(function(response) {
@@ -52,7 +55,7 @@ class Blog extends Component {
 	}
 
 	componentDidMount() {
-		axios.get("https://floating-plains-75090.herokuapp.com/blog")
+		axios.get("http://localhost:3001/blog")
 		.then(function(response) {
 			this.posts = response.data.post
 			this.setState({
@@ -66,7 +69,7 @@ class Blog extends Component {
 	onDelete(id) {
 		// e.preventDefault();
 		console.log(id)
-		axios.delete("https://floating-plains-75090.herokuapp.com/posts/"+id+"/delete")
+		axios.delete("http://localhost:3001/posts/"+id+"/delete")
 			.then(function(response){
 				console.log(response)
 				this.setState({
@@ -80,7 +83,7 @@ class Blog extends Component {
 		this.setState({
 			edit: this.state.posts[id]
 		});
-		axios.post("https://floating-plains-75090.herokuapp.com/post/"+id+"/edit", {
+		axios.post("http://localhost:3001/post/"+id+"/edit", {
 			title: id.title,
 			body: id.body
 		}).then(function(response) {
@@ -92,7 +95,6 @@ class Blog extends Component {
 			}
 			
 			this.edit.push(data);
-			console.log("Fizal");
 			console.log("Hi" + data.response.title);
 			this.setState({
 				edit: data
@@ -104,19 +106,21 @@ class Blog extends Component {
 
 	render() {
 		return (
+			<div>
+			<NavBar addNewStatus={this.addNewStatus} />
 			<div className="container">
         		<div className="row">
 	            
 	             <hr></hr>
 
 		            <div className="col-md-8">
-		            	<BlogForm addNewStatus={this.addNewStatus}/>
+		            	{/* <BlogForm addNewStatus={this.addNewStatus}/> */}
 							{
 								this.state.posts.map((post,i) => {
-									return <div className="col-md-8" key={"item-" + (i + 1)}>
+									return <div className="post col-md-8" key={"item-" + (i + 1)}>
 												<h2>{post.title}</h2>
 												<h4>{post.body}</h4>
-												<Edit edit={this.onEdit}  index={i}/>
+												{/* <Edit edit={this.onEdit}  index={i}/> */}
 												<br></br>
 												<Delete delete={this.onDelete} index={post.id}/>
 											</div>
@@ -129,6 +133,7 @@ class Blog extends Component {
             	</div>
             	<Footer />
             </div>	
+            </div>
 		);
 	}
 }
