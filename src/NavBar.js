@@ -22,9 +22,14 @@ export default class NavBar extends Component {
 	render () {
 		return(
 			<div>
-				<nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			{/*	<nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">
 			        <div className="container">
 			            <div className="navbar-header">
+			            	<button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						        <span className="icon-bar"></span>
+						        <span className="icon-bar"></span>
+						        <span className="icon-bar"></span>                        
+						      </button>
 			                <a className="navbar-brand" href="/">Eric's Blog</a>
 			            </div>
 			            <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -37,18 +42,32 @@ export default class NavBar extends Component {
 			                    </li>
 			                </ul>
 			            </div>
-			             <div class="collapse navbar-collapse" id="myNavbar">
-					     	<ul class="nav navbar-nav">
-					    		<li>
+			        </div>
+			    </nav> */}
+
+			    <nav className="navbar navbar-inverse">
+				  <div className="container-fluid">
+				    <div className="navbar-header">
+				      <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				        <span className="icon-bar"></span>
+				        <span className="icon-bar"></span>
+				        <span className="icon-bar"></span>                        
+				      </button>
+				      <a className="navbar-brand" href="/">Eric's Blog</a>
+				    </div>
+				    <div className="collapse navbar-collapse" id="myNavbar">
+				      <ul className="nav navbar-nav">
+				        <li>
 			                    	<a type="submit" data-toggle="modal" data-target="#myModal">Write</a> 
 			                    </li>
 			                    <li>
 			                        <a href="mailto:calabrese.eric@gmail.com">Contact</a>
 			                    </li>
-					      	</ul>
-					    </div>
-			        </div>
-			    </nav>
+				      </ul>
+				    </div>
+				  </div>
+				</nav>
+
 			    <div id="myModal" className="modal fade" role="dialog">
 		  			<div className="modal-dialog">
 						<div className="modal-content">

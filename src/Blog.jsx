@@ -6,7 +6,6 @@ import axios from 'axios';
 import BlogSearch from './BlogSearch';
 import Footer from './Footer';
 import NavBar from './NavBar';
-import '../public/Blog.css';
 
 
 
@@ -111,13 +110,11 @@ class Blog extends Component {
 			<div className="container">
         		<div className="row">
 	            
-	             <hr></hr>
-
 		            <div className="col-md-8">
 		            	{/* <BlogForm addNewStatus={this.addNewStatus}/> */}
 							{
 								this.state.posts.map((post,i) => {
-									return <div className="post col-md-8" key={"item-" + (i + 1)}>
+									return <div className="col-md-8" key={"item-" + (i + 1)}>
 												<h2>{post.title}</h2>
 												<h4>{post.body}</h4>
 												{/* <Edit edit={this.onEdit}  index={i}/> */}
