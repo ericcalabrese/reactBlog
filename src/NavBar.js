@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import '../public/NavBar.css';
+
 
 export default class NavBar extends Component {
 	constructor(props) {
@@ -22,29 +24,6 @@ export default class NavBar extends Component {
 	render () {
 		return(
 			<div>
-			{/*	<nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">
-			        <div className="container">
-			            <div className="navbar-header">
-			            	<button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-						        <span className="icon-bar"></span>
-						        <span className="icon-bar"></span>
-						        <span className="icon-bar"></span>                        
-						      </button>
-			                <a className="navbar-brand" href="/">Eric's Blog</a>
-			            </div>
-			            <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			                <ul className="nav navbar-nav">
-			                    <li>
-			                    	<a type="submit" data-toggle="modal" data-target="#myModal">Write</a> 
-			                    </li>
-			                    <li>
-			                        <a href="mailto:calabrese.eric@gmail.com">Contact</a>
-			                    </li>
-			                </ul>
-			            </div>
-			        </div>
-			    </nav> */}
-
 			    <nav className="navbar navbar-inverse">
 				  <div className="container-fluid">
 				    <div className="navbar-header">
@@ -58,11 +37,11 @@ export default class NavBar extends Component {
 				    <div className="collapse navbar-collapse" id="myNavbar">
 				      <ul className="nav navbar-nav">
 				        <li>
-			                    	<a type="submit" data-toggle="modal" data-target="#myModal">Write</a> 
-			                    </li>
-			                    <li>
-			                        <a href="mailto:calabrese.eric@gmail.com">Contact</a>
-			                    </li>
+			                <a type="submit" data-toggle="modal" data-target="#myModal">Write</a> 
+			            </li>
+			            <li>
+			        	    <a href="mailto:calabrese.eric@gmail.com">Contact</a>
+			            </li>
 				      </ul>
 				    </div>
 				  </div>
@@ -78,14 +57,14 @@ export default class NavBar extends Component {
 						    <div className="modal-body">
 	                            <form onSubmit={this.onSubmit}>
 									<div>
-										<input 
+										<input className="box"
 											name="title"
 											type="text"
 											placeholder="Add a title..."
 										/>
 									</div>
 									<div>
-										<textarea name="body" placeholder="Write your post..."></textarea>
+										<textarea className="box" name="body" placeholder="Write your post..."></textarea>
 									</div>
 									<button className="btn btn-primary">Send</button>
 								</form>		    
