@@ -37,6 +37,16 @@ export default class NavBar extends Component {
 			                    </li>
 			                </ul>
 			            </div>
+			             <div class="collapse navbar-collapse" id="myNavbar">
+					     	<ul class="nav navbar-nav">
+					    		<li>
+			                    	<a type="submit" data-toggle="modal" data-target="#myModal">Write</a> 
+			                    </li>
+			                    <li>
+			                        <a href="mailto:calabrese.eric@gmail.com">Contact</a>
+			                    </li>
+					      	</ul>
+					    </div>
 			        </div>
 			    </nav>
 			    <div id="myModal" className="modal fade" role="dialog">
