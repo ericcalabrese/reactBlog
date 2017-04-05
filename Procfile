@@ -1,1 +1,1 @@
-web: node server.js
+web: cp -rf build/* public/ && node server.js
