@@ -32,7 +32,7 @@ class Blog extends Component {
 
 
 	addNewStatus(newStatus) {
-		axios.post("https://floating-plains-75090.herokuapp.com/post", {
+		axios.post("https://ericsreactblog.herokuapp.com/post", {
 			title: newStatus.title,
 			body: newStatus.body
 		}).then(function(response) {
@@ -54,7 +54,7 @@ class Blog extends Component {
 	}
 
 	componentDidMount() {
-		axios.get("https://floating-plains-75090.herokuapp.com/blog")
+		axios.get("https://ericsreactblog.herokuapp.com/blog")
 		.then(function(response) {
 			this.posts = response.data.post
 			this.setState({
@@ -68,7 +68,7 @@ class Blog extends Component {
 	onDelete(id) {
 		// e.preventDefault();
 		console.log(id)
-		axios.delete("https://floating-plains-75090.herokuapp.com/posts/"+id+"/delete")
+		axios.delete("https://ericsreactblog.herokuapp.com/posts/"+id+"/delete")
 			.then(function(response){
 				console.log(response)
 				this.setState({
@@ -82,7 +82,7 @@ class Blog extends Component {
 		this.setState({
 			edit: this.state.posts[id]
 		});
-		axios.post("https://floating-plains-75090.herokuapp.com/post/"+id+"/edit", {
+		axios.post("https://ericsreactblog.herokuapp.com/post/"+id+"/edit", {
 			title: id.title,
 			body: id.body
 		}).then(function(response) {
