@@ -85,6 +85,9 @@ app.delete('/posts/:id/delete', function(req, res){
 });
 
 app.post('/posts/:id/edit', function(req, res){
+	console.error(err.stack)
+	res.status(404).send("Sorry can't find that!")
+	
 	BlogPosts.findById(req.params.id).
 	then(function(row){
 
