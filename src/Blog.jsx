@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 // import BlogForm from './BlogForm';
-// import Edit from './Edit';
+import Edit from './Edit';
 import Delete from './Delete';
 import axios from 'axios';
 import BlogSearch from './BlogSearch';
 import Footer from './Footer';
 import NavBar from './NavBar';
-
-
 
 class Blog extends Component {
 	constructor(props) {
@@ -27,7 +25,6 @@ class Blog extends Component {
 		this.addNewStatus = this.addNewStatus.bind(this);
 		this.onDelete = this.onDelete.bind(this);
 		this.onEdit = this.onEdit.bind(this);
-
 	}
 
 
@@ -78,15 +75,16 @@ class Blog extends Component {
 	}
 
 	onEdit(id){
-		console.log(id);
+		
 		this.setState({
 			edit: this.state.posts[id]
 		});
+
 		axios.post("https://ericsreactblog.herokuapp.com/post/"+id+"/edit", {
 			title: id.title,
 			body: id.body
 		}).then(function(response) {
-
+			console.log('new'+response);
 			let data = {
 				title: response.data.title,
 				body: response.data.body,
@@ -94,42 +92,63 @@ class Blog extends Component {
 			}
 			
 			this.edit.push(data);
-			console.log("Hi" + data.response.title);
+			console.log("dataPostCall" + data);
 			this.setState({
 				edit: data
 			});
 			
-		}.bind(this));
+		})
+		.catch(function(error) {
+			console.log('error'+error)
+		});
+
+		// axios.post("https://ericsreactblog.herokuapp.com/post/"+id+"/edit", {
+		// 	title: id.title,
+		// 	body: id.body
+		// }).then(function(response) {
+		// 	console.log('new'+response);
+		// 	let data = {
+		// 		title: response.data.title,
+		// 		body: response.data.body,
+		// 		id: response.data.id
+		// 	}
+			
+		// 	this.edit.push(data);
+		// 	console.log("dataPostCall" + data);
+		// 	this.setState({
+		// 		edit: data
+		// 	});
+			
+		// }.bind(this));
 	}
 	
 
 	render() {
 		return (
 			<div>
-			<NavBar addNewStatus={this.addNewStatus} />
-			<div className="container">
-        		<div className="row">
-	            
-		            <div className="col-md-8">
-		            	{/* <BlogForm addNewStatus={this.addNewStatus}/> */}
-							{
-								this.state.posts.map((post,i) => {
-									return <div className="col-md-8" key={"item-" + (i + 1)}>
-												<h2>{post.title}</h2>
-												<h4>{post.body}</h4>
-												{/* <Edit edit={this.onEdit}  index={i}/> */}
-												<br></br>
-												<Delete delete={this.onDelete} index={post.id}/>
-											</div>
-								}).reverse()
-							}
-            		</div>
-            		<div className="col-md-4">
-            			<BlogSearch />
-            		</div>
-            	</div>
-            	<Footer />
-            </div>	
+				<NavBar addNewStatus={this.addNewStatus} />
+				<div className="container">
+	        		<div className="row">
+			            <div className="col-md-8">
+			            	{/* <BlogForm addNewStatus={this.addNewStatus}/> */}
+								{
+									this.state.posts.map((post,i) => {
+										return <div className="col-md-8" key={"item-" + (i + 1)}>
+													<h2>{post.title}</h2>
+													<h4>{post.body}</h4>
+													 <Edit edit={this.onEdit}  index={post.id}/> 
+													<br></br>
+													<Delete delete={this.onDelete} index={post.id}/>
+												</div>
+									}).reverse()
+								}
+	            		</div>
+	            		<div className="col-md-4">
+	            			<BlogSearch />
+	            		</div>
+	            	</div>
+	            	<Footer />
+	            </div>	
             </div>
 		);
 	}
