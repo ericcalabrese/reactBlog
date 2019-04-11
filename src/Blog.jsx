@@ -80,7 +80,7 @@ class Blog extends Component {
 			edit: this.state.posts[id]
 		});
 
-		axios.post("https://ericsreactblog.herokuapp.com/posts/"+id+"/edit", {
+		axios.post("https://ericsreactblog.herokuapp.com/post/"+id+"/edit", {
 			title: id.title,
 			body: id.body
 		}).then(function(response) {

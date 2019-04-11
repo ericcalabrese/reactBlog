@@ -7,21 +7,6 @@ const bodyParser = require('body-parser')
 const Sequelize = require('sequelize')
 const cors = require('cors')
 
-// var whiteList = ['http://locahost:3000', 'https://ericsreactblog.herokuapp.com/']
-// var corsOptionsDelegate = function (req, callback) {
-//   var corsOptions;
-//   if (whitelist.indexOf(req.header('Origin')) !== -1) {
-//     corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
-//   } else {
-//     corsOptions = { origin: false } // disable CORS for this request
-//   }
-//   callback(null, corsOptions) // callback expects two parameters: error and options
-// }
-
-//app.use(cors());
-
-// app.options('/posts/:id/edit', cors())
-
 app.options('*', cors())
 
 var connect = process.env.DATABASE_URL || 'postgres://ericcalabrese:password@localhost:5432/blog_db';
@@ -89,7 +74,7 @@ app.delete('/posts/:id/delete', function(req, res){
 	})
 });
 
-app.post('/posts/:id/edit', cors(), function(req, res){
+app.post('/post/:id/edit', cors(), function(req, res){
 	console.error(err.stack)
 	res.status(404).send("Sorry can't find that!")
 
