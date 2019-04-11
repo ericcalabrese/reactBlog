@@ -18,7 +18,11 @@ const cors = require('cors')
 //   callback(null, corsOptions) // callback expects two parameters: error and options
 // }
 
-// app.use(cors);
+//app.use(cors());
+
+// app.options('/posts/:id/edit', cors())
+
+app.options('*', cors())
 
 var connect = process.env.DATABASE_URL || 'postgres://ericcalabrese:password@localhost:5432/blog_db';
 
@@ -36,7 +40,6 @@ var BlogPosts = sequelize.define('BlogPosts', {
 
 //use the public folder as the static directory. 
 app.use(function(req, res, next) {
-	console.log('req '+req)
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -53,7 +56,9 @@ app.get('/blog', function(req, res) {
 	console.log('iiiii')
 	BlogPosts.findAll().then(function(blogposts){
 		res.json({ post: blogposts });
+		console.log(blogposts)
 	}) 
+
 })
 
 app.post('/post', function(req, res) {
@@ -84,10 +89,10 @@ app.delete('/posts/:id/delete', function(req, res){
 	})
 });
 
-app.post('/posts/:id/edit', function(req, res){
+app.post('/posts/:id/edit', cors(), function(req, res){
 	console.error(err.stack)
 	res.status(404).send("Sorry can't find that!")
-	
+
 	BlogPosts.findById(req.params.id).
 	then(function(row){
 
