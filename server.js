@@ -41,7 +41,6 @@ app.get('/blog', function(req, res) {
 	console.log('iiiii')
 	BlogPosts.findAll().then(function(blogposts){
 		res.json({ post: blogposts });
-		console.log(blogposts)
 	}) 
 
 })
@@ -74,9 +73,7 @@ app.delete('/posts/:id/delete', function(req, res){
 	})
 });
 
-app.post('/post/:id/edit', cors(), function(req, res){
-	console.error(err.stack)
-	res.status(404).send("Sorry can't find that!")
+app.post('/posts/:id/edit', function(req, res){
 
 	BlogPosts.findById(req.params.id).
 	then(function(row){
@@ -84,7 +81,6 @@ app.post('/post/:id/edit', cors(), function(req, res){
 		if (!row) {
 			res.status(404).send("Could not find that post");
 			return;
-
 		}
 
 		var data = {
@@ -103,9 +99,7 @@ app.post('/post/:id/edit', cors(), function(req, res){
 sequelize.sync().then(function(){
 	console.log("Synced!");
 
-
-app.listen(port, function() {
-	console.log("Listening on " + port);
-
+	app.listen(port, function() {
+		console.log("Listening on " + port);
 	});
 }); 

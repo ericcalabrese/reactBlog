@@ -66,7 +66,7 @@ export default class NavBar extends Component {
 									<div>
 										<textarea className="box" name="body" placeholder="Write your post..."></textarea>
 									</div>
-									<button className="btn btn-primary" data-dismiss="modal">Send</button>
+									<button className="btn btn-primary">Send</button>
 								</form>		    
 							</div>
 					    </div>
