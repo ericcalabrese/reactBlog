@@ -26,7 +26,7 @@ var BlogPosts = sequelize.define('BlogPosts', {
 //use the public folder as the static directory. 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
@@ -42,7 +42,6 @@ app.get('/blog', function(req, res) {
 	BlogPosts.findAll().then(function(blogposts){
 		res.json({ post: blogposts });
 	}) 
-
 })
 
 app.post('/post', function(req, res) {
@@ -50,7 +49,6 @@ app.post('/post', function(req, res) {
 	BlogPosts.create(req.body).then(function(blogposts){
 		res.json(blogposts);
 	})
-
 });
 
 app.delete('/posts/:id/delete', function(req, res){
@@ -73,8 +71,7 @@ app.delete('/posts/:id/delete', function(req, res){
 	})
 });
 
-app.post('/posts/:id/edit', function(req, res){
-
+app.post('/posts/:id', function(req, res){
 	BlogPosts.findById(req.params.id).
 	then(function(row){
 
