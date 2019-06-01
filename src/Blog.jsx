@@ -67,20 +67,28 @@ class Blog extends Component {
 		console.log(id)
 		axios.delete("https://ericsreactblog.herokuapp.com/posts/"+id+"/delete")
 			.then(function(response){
-				console.log(response)
+				console.log('response: '+response)
 				this.setState({
 					posts: response.data
 				});
+				console.log('newPosts: '+this.setState.posts)
 			}.bind(this))					
 	}
 
 	onEdit(id){
-		
-		this.setState({
-			edit: this.state.posts[id]
-		});
+		console.log('editId: '+ id);
 
-		axios.post("https://ericsreactblog.herokuapp.com/posts/"+id, {
+		this.state.posts.map((post,i) => {
+			console.log(post,i)
+			if(post.id === id.id) {
+				this.setState({
+					edit: post
+				});
+			}
+		});
+		
+
+		axios.post("https://ericsreactblog.herokuapp.com/posts/"+id.id+"/edit", {
 			title: id.title,
 			body: id.body
 		}).then(function(response) {
@@ -133,10 +141,10 @@ class Blog extends Component {
 			            	{/* <BlogForm addNewStatus={this.addNewStatus}/> */}
 								{
 									this.state.posts.map((post,i) => {
-										return <div className="col-md-8" key={"item-" + (i + 1)}>
+										return <div className="col-md-8" key={"item-" + (post.id)}>
 													<h2>{post.title}</h2>
 													<h4>{post.body}</h4>
-													 <Edit edit={this.onEdit}  index={post.id}/> 
+													 <Edit edit={this.onEdit}  index={post}/> 
 													<br></br>
 													<Delete delete={this.onDelete} index={post.id}/>
 												</div>

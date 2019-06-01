@@ -52,7 +52,7 @@ app.post('/post', function(req, res) {
 });
 
 app.delete('/posts/:id/delete', function(req, res){
-	console.log(req.params.id)
+	console.log('serverJsConsoleDelete'+req.params.id)
 	BlogPosts.findById(req.params.id).
 	then(function(row){
 
@@ -71,7 +71,8 @@ app.delete('/posts/:id/delete', function(req, res){
 	})
 });
 
-app.post('/posts/:id', function(req, res){
+app.post('/posts/:id/edit', function(req, res){
+	console.log('serverJsEdit')
 	BlogPosts.findById(req.params.id).
 	then(function(row){
 
