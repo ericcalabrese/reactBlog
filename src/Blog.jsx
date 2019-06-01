@@ -45,6 +45,7 @@ class Blog extends Component {
 			this.setState({
 				posts: this.posts
 			});
+			console.log(post,i)
 			
 		}.bind(this));
 
@@ -84,6 +85,8 @@ class Blog extends Component {
 				this.setState({
 					edit: post
 				});
+				console.log('hi')
+				console.log(this.state.edit);
 			}
 		});
 		

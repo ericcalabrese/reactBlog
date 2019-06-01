@@ -10,8 +10,6 @@ class Edit extends Component {
 
 	clickEdit(e) {
 		e.preventDefault();
-		console.log("hey "+e);
-
 		this.props.edit({
 			title: e.target.title.value,
 			body: e.target.body.value,
